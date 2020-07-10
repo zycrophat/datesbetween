@@ -8,7 +8,7 @@ A Scala library for calculating all dates between two given dates.
 To use the library, import the following:
 
 ``` scala
-import steffan.datesbetween.DatesBetween._
+import zycrophat.datesbetween.DatesBetween._
 ```
 
 A Seq of dates can be calculated as followed:
@@ -53,6 +53,14 @@ val end = ZonedDateTime.parse("2020-03-06T13:37:42+02:00")
 implicit val zonedDateTimeToLocalDate: ZonedDateTime => LocalDate = (zdt: ZonedDateTime) => zdt.toLocalDate
 
 val theDatesBetween = datesBetween(start.exclusive, end) // will include 2020-03-02, ... , 2020-03-06
+```
+
+You can also the `and` method for an even more fluent experience:
+``` scala
+val start = LocalDate.of(2020, 3, 1)
+val end = LocalDate.of(2020, 3, 6).atTime(13, 37)
+
+val theDatesBetween = datesBetween(start.exclusive and end.exclusive, Period.ofDays(2))
 ```
 
 ## Prerequisites
