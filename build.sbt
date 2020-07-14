@@ -10,4 +10,5 @@ libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.0" % Test
 
 git.useGitDescribe := true
 
-coverageEnabled := true
+ThisBuild / coverageEnabled.in(Test, test) := true
+ThisBuild / coverageEnabled in(Compile, compile) := false
